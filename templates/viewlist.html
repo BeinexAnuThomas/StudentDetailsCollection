@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<br>
+ 
+        <h2> &nbsp;&nbsp;&nbsp;Student List </h2><hr>
+        {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <p id="message-timer" class="alert alert-success float-center text-center">{{message}}</p>
+                {% endif %}
+        {% endfor %}
+        {% for i in stud %}
+            <div class="container ">
+                <div class="row">
+                    <div class="col-lg-6 ">
+                        <div class="card" style="width: 34rem;">
+                            <div class="card-body">
+                                <h4 class="card-title" style="color: rgb(18, 18, 18);">Full Name :  {{i.Full_Name}}</h4>
+                                <h6 class="card-subtitle mb-2 ">Email : {{i.Email}}</h6>
+                                <h6 class="card-subtitle mb-2 ">Age : {{i.Age}}</h6>
+                                <h6 class="card-subtitle mb-2 ">Class : {{i.Class}}</h6>                          
+                                <h6 class="card-subtitle mb-2">Description : {{i.Description}}</h6><br>
+                                
+                                <a class="btn btn-outline-warning" type="button" href="{% url 'updatelist' i.id %}" class="card-link">Update</a>
+                                <a class="btn btn-outline-danger" type="button" href="{% url 'deletelist' i.id %}" class="card-link">Delete</a>
+                            </div>
+                        </div><br><br>
+                    </div>
+                </div>
+            </div>       
+            {% endfor %}
+{% endblock %}
+

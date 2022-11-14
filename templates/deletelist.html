@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<br><br>
+{% block body %}
+    <div class="container shadow-md p-5 formLayout">
+        <h2> Delete the Student data...</h2><hr>
+        <form class="form-group row " method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <p style="font-size:20px ;">Are you sure want to Delete "{{object}}"?</p><br><br><br>
+            <div  class='btn-group butn'>
+                <input class="btn btn-outline-primary" type="submit" value="Delete">&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-outline-primary" type="button" href="{% url 'viewlist' %}">Cancel</a>&nbsp;&nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
+{% endblock %}
